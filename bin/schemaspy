@@ -1,0 +1,8 @@
+#!/bin/sh
+
+CURRENT=$(cd $(dirname $0) && pwd)
+cd $CURRENT/..
+
+java -Dfile.encoding=UTF-8 -jar schemaspy/schemaSpy_5.0.0.jar -t pgsql -host $1 -db $2 -u $3 -s public -p $4 -dp schemaspy/postgresql-9.2-1003.jdbc4.jar -charset utf-8 -o schema -connprops bin/conn.propeties
+
+
