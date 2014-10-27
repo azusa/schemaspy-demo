@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="d66vta52qi8mtp" schema="public" type="PostgreSQL - 9.3.3">
+   <tables>
+      <table name="changelog" numRows="4" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="id" nullable="false" remarks="" size="20" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="1" name="applied_at" nullable="false" remarks="" size="25" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="description" nullable="false" remarks="" size="255" type="varchar"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="pk_changelog" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="dept" numRows="0" remarks="部署" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="deptno" nullable="false" remarks="部署番号" size="2" type="numeric">
+            <child column="deptno" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="emp"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="dname" nullable="true" remarks="" size="14" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="loc" nullable="true" remarks="地域" size="13" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="versionno" nullable="true" remarks="バージョン番号" size="8" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="4" name="active" nullable="true" remarks="有効" size="1" type="numeric"/>
+         <primaryKey column="deptno" sequenceNumberInPK="1"/>
+         <index name="dept_pkey" unique="true">
+            <column ascending="true" name="deptno"/>
+         </index>
+      </table>
+      <table name="emp" numRows="0" remarks="従業員" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="empno" nullable="false" remarks="社員番号" size="4" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="1" name="ename" nullable="true" remarks="氏名" size="10" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="job" nullable="true" remarks="職種" size="9" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="mgr" nullable="true" remarks="上長" size="4" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="4" name="hiredate" nullable="true" remarks="入社日" size="13" type="date"/>
+         <column autoUpdated="false" digits="2" id="5" name="sal" nullable="true" remarks="基本給" size="7" type="numeric"/>
+         <column autoUpdated="false" digits="2" id="6" name="comm" nullable="true" remarks="歩合給" size="7" type="numeric"/>
+         <column autoUpdated="false" digits="0" id="7" name="deptno" nullable="true" remarks="部署" size="2" type="numeric">
+            <parent column="deptno" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="dept"/>
+         </column>
+         <column autoUpdated="false" digits="6" id="8" name="tstamp" nullable="true" remarks="タイムスタンプ" size="29" type="timestamp"/>
+         <primaryKey column="empno" sequenceNumberInPK="1"/>
+         <index name="emp_pkey" unique="true">
+            <column ascending="true" name="empno"/>
+         </index>
+      </table>
+   </tables>
+</database>
